@@ -1,0 +1,162 @@
+# Podrobné Guidlines pro Projekt: Automatické Kódování Diagnóz a Výkonů
+
+## **1. Cíl Projektu**
+
+Vytvořit funkční nástroj pro automatické kódování lékařských diagnóz a výkonů pomocí OpenAI API a datových zdrojů MKN-11 a ICD-11, který minimalizuje administrativní zátěž a zvyšuje přesnost kódování.
+
+---
+
+## **2. Projektová Architektura**
+
+### **2.1 Komponenty Systému**
+
+- **Frontend:** Next.js (Dashboard pro uživatele) a komponenty Shadcn/UI.
+- **Backend:** FastAPI (API pro zpracování požadavků).
+- **Model:** OpenAI API (zpracování přirozeného jazyka).
+- **Datové Soubory:** MKN-11 a ICD-11 pro referenční data.
+- **Nasazení:** Docker
+
+---
+
+## **3. Klíčové Funkce**
+
+### **3.1. Uživatelské Funkce**
+
+- Vložení textu lékařské zprávy.
+- Kliknutí na tlačítko „Přidat Kódování“.
+- Zobrazení navržených kódů MKN-11.
+
+### **3.2. Backend Funkce**
+
+- Zpracování požadavků přes API.
+- Volání OpenAI modelu.
+- Přiřazení diagnostických kódů na základě výstupů modelu.
+- Vrácení výsledků uživateli.
+
+---
+
+## **4. Proces Vývoje**
+
+### **Fáze 1: Příprava Dat (1 týden)**
+
+- Extrakce klíčových dat ze souboru `mkn-11-terminologie-202403.xlsx`.
+- Definice základních diagnostických entit.
+
+### **Fáze 2: Vývoj Backend API (2 týdny)**
+
+- Implementace FastAPI aplikace.
+- Vytvoření endpointu `/api/code` s POST metodou.
+- Testování integrace OpenAI API.
+
+### **Fáze 3: Vývoj Dashboardu (1 týden)**
+
+- Frontend aplikace v Next.js.
+- Formulář pro zadávání zpráv.
+- Výstupní zobrazení navržených kódů.
+
+### **Fáze 4: Testování a Validace (1 týden)**
+
+- Testování na reálných datech.
+- Ladění a oprava chyb.
+
+### **Fáze 5: Nasazení (1 týden)**
+
+- Příprava Docker kontejnerů.
+- Finalizace prezentace.
+
+---
+
+## **5. API Specifikace**
+
+### \*\*Endpoint: \*\***`/api/code`**
+
+- **Metoda:** POST
+- **Parametry:** JSON objekt s textem zprávy:
+  ```json
+  {
+    "text": "Pacient trpí hypertenzí a diabetes mellitus."
+  }
+  ```
+- **Výstup:**
+  ```json
+  {
+    "codes": [
+      {"diagnosis": "Hypertenze", "icd_code": "I10"},
+      {"diagnosis": "Diabetes mellitus", "icd_code": "E11"}
+    ]
+  }
+  ```
+
+---
+
+## **6. Specifikace Uživatelského Rozhraní**
+
+### **Dashboard**
+
+- **Pole pro Text Zprávy:** Textarea pro zadání lékařské zprávy.
+- **Tlačítko „Přidat Kódování“:** Aktivuje API požadavek.
+- **Výstupní Sekce:** Seznam přiřazených diagnostických kódů.
+
+### **Designové Požadavky:**
+
+- Minimalistické a přívětivé rozhraní.
+- Podpora češtiny a angličtiny.
+
+---
+
+## **7. Technologický Stack**
+
+| Komponenta         | Technologie        |
+| ------------------ | ------------------ |
+| **Frontend**       | Next.js, Shadcn/UI |
+| **Backend**        | FastAPI (Python)   |
+| **NLP Model**      | OpenAI API         |
+| **Datové Soubory** | MKN-11, ICD-11     |
+| **Nasazení**       | Docker             |
+
+---
+
+## **8. Bezpečnostní Aspekty**
+
+- **Pro MVP:** Žádné ukládání dat, žádná autentizace.
+- **Pro Produkční Verzi:**
+  - Šifrování dat.
+  - Autentizace a autorizace uživatelů.
+  - Splnění legislativních požadavků na zpracování zdravotních údajů.
+
+---
+
+## **9. Testovací Strategie**
+
+### **Jednotkové Testy (Backend)**
+
+- Testování API endpointu `/api/code`.
+- Validace JSON odpovědí.
+
+### **Uživatelské Testy (Frontend)**
+
+- Testování zobrazení diagnostických kódů.
+- Ověření funkčnosti interakce uživatele s aplikací.
+
+### **Zátěžové Testy**
+
+- Testování škálovatelnosti API při vysokém počtu požadavků.
+
+---
+
+## **10. Plán Nasazení**
+
+1. Finalizace Docker kontejnerů.
+2. Vytvoření CI/CD pipeline.
+
+---
+
+## **11. Možnosti Budoucího Rozšíření**
+
+- **Podpora Vícejazyčných Textů:** Přidání více jazyků.
+- **Validace Diagnóz:** Pokročilé ověřování správnosti kódů.
+- **Integrace s EHR:** Připojení k nemocničním systémům přes API.
+- **Analytické Funkce:** Statistiky pro zdravotnická zařízení.
+
+Tento dokument poskytuje komplexní směrnice pro vývoj, implementaci a nasazení nástroje pro automatické kódování diagnóz a výkonů.
+

@@ -1,5 +1,7 @@
 # MKN11 Automatické Kódování
 
+![MKN11 Cover](https://utfs.io/f/NyKlEsePJFL1Zxkg6CHqH52V3xpRUZkbs9AW0PMgyzmDavhY)
+
 Systém pro automatické kódování diagnóz a výkonů z lékařských zpráv pomocí MKN-11/ICD-11 a OpenAI API.
 
 ## Popis Projektu

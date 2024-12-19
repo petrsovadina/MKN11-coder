@@ -1,19 +1,15 @@
-# MKN11 Automatické Kódování
+# MKN-11 Asistované Kódování
 
 ![MKN11 Cover](https://utfs.io/f/NyKlEsePJFL1Zxkg6CHqH52V3xpRUZkbs9AW0PMgyzmDavhY)
 
-Systém pro automatické kódování diagnóz a výkonů z lékařských zpráv pomocí MKN-11/ICD-11 a OpenAI API.
-
-## Popis Projektu
-
-Tento projekt poskytuje nástroj pro automatické kódování lékařských diagnóz a výkonů z textových zpráv do standardizovaných kódů MKN-11/ICD-11. Využívá pokročilé AI modely od OpenAI pro zpracování přirozeného jazyka a mapování na odpovídající kódy.
+Vyvíjím systém pro asistované kódování diagnóz podle standardu MKN-11 s využitím umělé inteligence. Mým cílem je zjednodušit a zrychlit proces kódování při zachování přesnosti výsledků.
 
 ## Technologie
 
-- **Frontend:** Next.js, Shadcn/UI
+- **Frontend:** Next.js 14, Tailwind CSS, Shadcn/UI, Framer Motion
 - **Backend:** FastAPI (Python)
 - **AI Model:** OpenAI GPT-4
-- **Data:** MKN-11/ICD-11 terminologie
+- **Data:** MKN-11 terminologie
 - **Kontejnerizace:** Docker
 
 ## Struktura Projektu
@@ -23,11 +19,10 @@ mkn11/
 ├── backend/         # FastAPI backend
 │   ├── app/        # Aplikační kód
 │   ├── tests/      # Testy
-│   └── data/       # Zpracovaná data
+│   └── data/       # Data MKN-11
 ├── frontend/       # Next.js frontend
 │   ├── src/        # Zdrojový kód
 │   └── public/     # Statické soubory
-├── data/          # Zdrojová data MKN-11
 └── docker/        # Docker konfigurace
 ```
 
@@ -60,6 +55,7 @@ mkn11/
 2. Aplikace bude dostupná na:
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
+   - API Dokumentace: http://localhost:8000/docs
 
 ### Manuální Spuštění
 
@@ -79,38 +75,38 @@ mkn11/
    npm run dev
    ```
 
-## API Endpointy
+## API Dokumentace
 
-### POST /api/code
-Kódování lékařského textu:
+Kompletní API dokumentace je dostupná na `/docs` nebo `/redoc` endpointech běžícího backend serveru.
+
+### Hlavní Endpoint
+
+`POST /api/code`
+
+Tento endpoint přijímá text lékařské zprávy a vrací relevantní MKN-11 kódy:
+
+Request:
 ```json
 {
-  "text": "Pacient trpí hypertenzí a diabetes mellitus."
+  "text": "Pacient trpí hypertenzí."
 }
 ```
 
-Odpověď:
+Response:
 ```json
 {
   "codes": [
     {
       "diagnosis": "Hypertenze",
-      "icd_code": "BA00"
-    },
-    {
-      "diagnosis": "Diabetes mellitus",
-      "icd_code": "5A10"
+      "code": "BA00",
+      "description": "Hypertenzní onemocnění"
     }
   ]
 }
 ```
 
-## Vývoj
+## Autor
 
-- Pro přidání nových funkcí vytvořte novou větev
-- Dodržujte konvence pro commit zprávu
-- Před commitem spusťte testy
-
-## Licence
-
-Tento projekt je interní software. Všechna práva vyhrazena.
+Petr Sovadina
+- [LinkedIn](https://www.linkedin.com/in/petrsovadina)
+- [Blog](https://portfolio-sovadina.vercel.app/blog)

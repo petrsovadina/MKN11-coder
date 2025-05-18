@@ -14,7 +14,7 @@ export function HowItWorks() {
             českého textu z lékařských zpráv.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-6 rounded-lg bg-muted flex items-start space-x-4">
+            <div className="p-6 rounded-lg bg-transparent border border-border flex items-start space-x-4">
               <Upload className="h-6 w-6 text-primary mt-1" />
               <div>
                 <h4 className="font-medium text-lg mb-2">Textový vstup</h4>
@@ -23,7 +23,7 @@ export function HowItWorks() {
                 </p>
               </div>
             </div>
-            <div className="p-6 rounded-lg bg-muted flex items-start space-x-4">
+            <div className="p-6 rounded-lg bg-transparent border border-border flex items-start space-x-4">
               <Brain className="h-6 w-6 text-primary mt-1" />
               <div>
                 <h4 className="font-medium text-lg mb-2">Příprava textu</h4>
@@ -44,7 +44,7 @@ export function HowItWorks() {
             Umělá inteligence analyzuje vložený text a hledá v něm relevantní diagnózy
             podle standardu MKN-11.
           </p>
-          <div className="p-6 rounded-lg bg-muted mb-4">
+          <div className="p-6 rounded-lg bg-transparent border border-border mb-4">
             <h4 className="font-medium text-lg mb-4">Proces zpracování:</h4>
             <div className="space-y-3">
               <div className="flex items-center text-muted-foreground text-lg">
@@ -77,14 +77,14 @@ export function HowItWorks() {
             Výsledky jsou přehledně zobrazeny pro okamžité použití.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-6 rounded-lg bg-muted">
+            <div className="p-6 rounded-lg bg-transparent border border-border">
               <h4 className="font-medium text-lg mb-3">Přehledné zobrazení</h4>
               <p className="text-lg text-muted-foreground">
                 Výsledky jsou zobrazeny v přehledné formě pro snadné čtení.
                 Každý kód je doplněn o český popis z MKN-11.
               </p>
             </div>
-            <div className="p-6 rounded-lg bg-muted">
+            <div className="p-6 rounded-lg bg-transparent border border-border">
               <h4 className="font-medium text-lg mb-3">Validace výsledků</h4>
               <p className="text-lg text-muted-foreground">
                 Všechny navržené kódy jsou validovány proti aktuální verzi MKN-11
@@ -98,7 +98,7 @@ export function HowItWorks() {
   ];
 
   return (
-    <div className="w-full border-t border-border">
+    <div className="w-full">
       <Timeline data={data} />
     </div>
   );

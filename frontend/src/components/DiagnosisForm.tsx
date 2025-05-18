@@ -24,7 +24,7 @@ export default function DiagnosisForm() {
     setLoading(true)
 
     try {
-      const response = await axios.post('http://localhost:8000/api/code', { text })
+      const response = await axios.post('/api/code', { text })
       setDiagnoses(response.data.codes)
       toast({
         title: 'Úspěch',

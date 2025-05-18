@@ -16,7 +16,7 @@ import { PulsatingOutlineShadowButton } from "./ui/pulsating-button"
 
 export default function FooterSection() {
   return (
-    <footer className="bg-background py-8 sm:py-12 border-t border-border/5">
+    <footer className="py-8 sm:py-12 border-t border-border/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col gap-4 sm:gap-6">

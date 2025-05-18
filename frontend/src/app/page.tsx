@@ -23,19 +23,19 @@ export default function Home() {
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 rounded-lg bg-muted">
+                <div className="p-6 rounded-lg bg-transparent border border-border">
                   <div className="text-2xl font-bold mb-2">MKN-11</div>
                   <div className="text-sm text-muted-foreground">Nejnovější verze standardu</div>
                 </div>
-                <div className="p-6 rounded-lg bg-muted">
+                <div className="p-6 rounded-lg bg-transparent border border-border">
                   <div className="text-2xl font-bold mb-2">AI</div>
                   <div className="text-sm text-muted-foreground">Asistované kódování</div>
                 </div>
-                <div className="p-6 rounded-lg bg-muted">
+                <div className="p-6 rounded-lg bg-transparent border border-border">
                   <div className="text-2xl font-bold mb-2">CZ</div>
                   <div className="text-sm text-muted-foreground">Podpora češtiny</div>
                 </div>
-                <div className="p-6 rounded-lg bg-muted">
+                <div className="p-6 rounded-lg bg-transparent border border-border">
                   <div className="text-2xl font-bold mb-2">Web</div>
                   <div className="text-sm text-muted-foreground">Bez instalace</div>
                 </div>

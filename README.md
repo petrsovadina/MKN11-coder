@@ -6,78 +6,55 @@ Vyvíjím systém pro asistované kódování diagnóz podle standardu MKN-11 s 
 
 ## Technologie
 
-- **Frontend:** Next.js 14, Tailwind CSS, Shadcn/UI, Framer Motion
-- **Backend:** FastAPI (Python)
+- **Frontend:** Next.js 14, Tailwind CSS, Shadcn/UI
 - **AI Model:** OpenAI GPT-4
 - **Data:** MKN-11 terminologie
-- **Kontejnerizace:** Docker
+- **Serverless:** Vercel
 
 ## Struktura Projektu
 
 ```
 mkn11/
-├── backend/         # FastAPI backend
-│   ├── app/        # Aplikační kód
-│   ├── tests/      # Testy
-│   └── data/       # Data MKN-11
-├── frontend/       # Next.js frontend
-│   ├── src/        # Zdrojový kód
-│   └── public/     # Statické soubory
-└── docker/        # Docker konfigurace
+├── frontend/       # Next.js frontend + API
+│   ├── src/
+│   │   ├── app/   # Pages a API routes
+│   │   └── data/  # MKN-11 data
+│   └── public/    # Statické soubory
+└── docs/         # Dokumentace
 ```
 
 ## Požadavky
 
-- Python 3.9+
 - Node.js 18+
-- Docker a Docker Compose
 - OpenAI API klíč
+- Vercel účet (pro deployment)
 
 ## Konfigurace
 
-1. Vytvořte soubor `.env` v kořenovém adresáři:
+1. Vytvořte soubor `.env` v adresáři frontend:
    ```env
    OPENAI_API_KEY=váš-api-klíč
-   MODEL_NAME=gpt-4-1106-preview
-   MAX_TOKENS=2000
-   TEMPERATURE=0.3
    ```
 
 ## Instalace a Spuštění
 
-### Pomocí Dockeru (Doporučeno)
+### Lokální Vývoj
 
-1. Sestavte a spusťte kontejnery:
-   ```bash
-   docker-compose up --build
-   ```
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-2. Aplikace bude dostupná na:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:8000
-   - API Dokumentace: http://localhost:8000/docs
+Aplikace bude dostupná na http://localhost:3000
 
-### Manuální Spuštění
+### Deployment na Vercel
 
-1. Backend:
-   ```bash
-   cd backend
-   python -m venv venv
-   source venv/bin/activate  # nebo `venv\Scripts\activate` na Windows
-   pip install -r requirements.txt
-   uvicorn app.main:app --reload
-   ```
-
-2. Frontend:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
+1. Propojte váš GitHub repozitář s Vercelem
+2. Nastavte environment proměnnou `OPENAI_API_KEY` v nastavení projektu
+3. Spusťte deployment
 
 ## API Dokumentace
-
-Kompletní API dokumentace je dostupná na `/docs` nebo `/redoc` endpointech běžícího backend serveru.
 
 ### Hlavní Endpoint
 
@@ -98,8 +75,11 @@ Response:
   "codes": [
     {
       "diagnosis": "Hypertenze",
-      "code": "BA00",
-      "description": "Hypertenzní onemocnění"
+      "description": "Hypertenzní onemocnění",
+      "icd_code": "BA00",
+      "confidence": "high",
+      "is_preliminary": true,
+      "score": 95.5
     }
   ]
 }

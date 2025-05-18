@@ -8,7 +8,7 @@ import { HyperText } from "@/components/magicui/hyper-text"
 
 const Hero = () => {
   return (
-    <Section className="bg-background border-b border-border">
+    <Section className="">
       <Container className="flex flex-col items-center text-center max-w-[800px]">
         <div className="mb-10 flex items-center justify-center">
           <Image

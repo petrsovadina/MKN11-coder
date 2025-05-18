@@ -27,7 +27,10 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="mkn-theme"
         >
-          <div className="min-h-screen bg-background font-sans antialiased flex flex-col">
+          {/* Background pattern - optimalizováno pro světlý i tmavý režim, ukotvené a do ztracena dole */}
+          <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0f_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_100%,#000_70%,transparent_110%)]"></div>
+          
+          <div className="min-h-screen font-sans antialiased flex flex-col">
             <div className="flex-1">
               {children}
             </div>
